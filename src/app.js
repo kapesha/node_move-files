@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 
@@ -20,11 +21,12 @@ function moveFile() {
   try {
     if (fs.existsSync(newFileNamePath)) {
       const basename = path.basename(fileNamePath);
+
       newFileNamePath = path.join(newFileNamePath, basename);
     }
     fs.renameSync(fileNamePath, newFileNamePath);
   } catch (err) {
-    console.error('Ошибка при перемещении файла:', err);
+    console.error(err);
   }
 }
 
